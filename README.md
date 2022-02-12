@@ -11,6 +11,7 @@ Install latest version (if you already have Pwsh installed):
 
 ```powershell
 # Ampersand char is "call" character.  See <https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_operators?view=powershell-7.1#call-operator->
+# expression below will launch a new PowerShell installer
 invoke-expression "& { $(invoke-restMethod <https://aka.ms/install-powershell.ps1>) } -UseMSI"
 ```
 
@@ -18,12 +19,14 @@ Ubuntu installation instructions: <https://docs.microsoft.com/en-us/powershell/s
 
 MacOS instatllation instructions:  <https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-macos>
 
-CENTOS:  <https://docs.microsoft.com/en-us/powershell/scripting/install/install-centos?view=powershell-7.2>
+CENTOS:  <https://docs.microsoft.com/en-us/powershell/scripting/install/install-centos?view>
 
 ## Basic PowerShell usage
 
 PowerShell commands are a verb ("get", "invoke", etc.) and a noun ("member","expression").
 Get-Member is a very good example, and it's a command that can be very helpful in understanding what other commands do.
+
+Below we'll pipe the get-uptime cmdlet to get-member.
 
 ```powershell
 get-uptime | get-member 
