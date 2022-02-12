@@ -116,16 +116,20 @@ invoke-expression "$($pathvar)scriptname.ps1 -scriptParm1 $($parmVar1)"
 
 ### Run .ps1 script on three computers simultaneously
 
-This is neat, because it executes the local c:\utils\testLocalUtil.ps1 script on the three remote computers at the same time. Results are returned to the local computer
+This is neat, because it executes the local c:\utils\testLocalUtil.ps1 script on the three remote computers at the same time--in parallel. Results are returned to the local computer
 
 ```powershell
-invoke-command -computerName Computer1.smuedu, Computer2.smu.edu, Computer3.smu.edu -filePath c:\utils\testLocalUtil.ps1
+invoke-command -computerName Computer1.smu.edu, Computer2.smu.edu, Computer3.smu.edu -filePath c:\utils\testLocalUtil.ps1
 ```
 
 ### Run a script block on remote computers simultaneously
 
 ```powershell
-invoke-command -computername Computer1.smuedu, Computer2.smu.edu, Computer3.smu.edu -scriptBlock {get-childitem c:\}
+invoke-command -computername Computer1.smuedu, Computer2.smu.edu, Computer3.smu.edu -scriptBlock 
+{    
+    get-childitem c:\ 
+    # and any other statements/scripts you'd like to run 
+}
 ```
 
 ### Run a script block on remote computers in series
@@ -151,8 +155,16 @@ import-csv -path ./samples/sample4.csv
 ### select just a particiular subset of values from a csv file
 
 ```powershell
-import-csv -path ./samples/sample4.csv | Select-String "Length=29"
+import-csv -path ./sampleDataFiles/sample4.csv | Select-String "Length=29"
 ```
+
+Here's another way to do accomplish something similarly, formatted differently. The differences in formatting are due to the differences in how where-object and select-string work.  
+
+```powershell
+get-content -path ./sampleDataFiles/sample4.csv| convertfrom-csv |Where-Object "Game Length" -eq 78
+```
+
+Note that the above get-content command works identically when reading a json file and using the convertfrom-json cmdlet.
 
 ### convert csv to json
 
