@@ -157,5 +157,5 @@ import-csv -path ./samples/sample4.csv | Select-String "Length=29"
 ### convert csv to json
 
 ```powershell
-import-csv -path ./samples/sample4.csv | convertfrom-json
+import-csv -path ./samples/sample4.csv | convertto-json
 ```
