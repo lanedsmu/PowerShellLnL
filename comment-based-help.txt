@@ -1,0 +1,16 @@
+<#
+   .Synopsis
+    This does that 
+   .Example
+    Example-
+    Example- accomplishes 
+   .Parameter 
+    The parameter
+   .Notes
+    NAME: Example-
+    AUTHOR: $env:username
+    LASTEDIT: $(Get-Date)
+    KEYWORDS:
+   .Link
+    <wiki.smu.edu/display/ITS/path_to_my_documentation>
+#>

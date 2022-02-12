@@ -1,1 +1,1 @@
-Get-ChildItem -Path c:\test -recurse -Include *.txt -Exclude *.exe |Where-Object { $_.CreationTime -lt (Get-Date).AddDays(-30) }| Sort-Object CreationTime
+Get-ChildItem -Path c:\temp -recurse -Include *.txt -Exclude *.exe |Where-Object { $_.CreationTime -lt (Get-Date).AddDays(-30) }| Sort-Object CreationTime

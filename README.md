@@ -1,13 +1,83 @@
 # Powershell and You: scripting for a better (less manual) world
 
-## PowerShell: Cross-Platform
+## PowerShell: Cross-Platform Installation
+
 Used to be PowerShell was just for Windows.  No longer.
+
+<https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell>
+
+Install latest version (if you already have Pwsh installed):
+<https://aka.ms/install-powershell.ps1>
+
+```powershell
+# Ampersand char is "call" character.  See <https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_operators?view=powershell-7.1#call-operator->
+invoke-expression "& { $(invoke-restMethod <https://aka.ms/install-powershell.ps1>) } -UseMSI"
+```
 
 Ubuntu installation instructions: <https://docs.microsoft.com/en-us/powershell/scripting/install/install-ubuntu>
 
 MacOS instatllation instructions:  <https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-macos>
 
 CENTOS:  <https://docs.microsoft.com/en-us/powershell/scripting/install/install-centos?view=powershell-7.2>
+
+## Basic PowerShell usage
+
+PowerShell commands are a verb ("get", "invoke", etc.) and a noun ("member","expression").
+Get-Member is a very good example, and it's a command that can be very helpful in understanding what other commands do.
+
+```powershell
+get-uptime | get-member 
+```
+
+Pro tip: when typing on the command line, CTRL Space will give you a list of possible switches and options that you can choose from dynamically.
+
+```powershell
+PS C:\git\PowerShellLnL> Send-MailMessage -{CTRL SPACE HERE}
+Attachments                 Priority                    ErrorAction
+Bcc                         ReplyTo                     WarningAction
+Body                        Subject                     InformationAction
+BodyAsHtml                  To                          ErrorVariable
+Encoding                    Credential                  WarningVariable
+Cc                          UseSsl                      InformationVariable
+DeliveryNotificationOption  Port                        OutVariable
+From                        Verbose                     OutBuffer
+SmtpServer                  Debug                       PipelineVariable
+
+[string[]] Attachments
+```
+
+## Active Directory information
+
+Powershell has the ability to display and operate on domain objects
+
+```powershell
+get-aduser -identity xxxx 
+```
+
+```powershell
+get-adgroup -identity xxxx
+```
+
+## CSV and JSON files
+
+Powershell has built-in csv and json parsing:
+
+```powershell
+get-content ./sampleDataFiles/sample4.csv | convertfrom-csv
+```
+
+```powershell
+get-content ./sampleDataFiles/myJsonSettingsFile.json | convertfrom-json
+```
+
+## Writing your own scripts
+
+The biggest reason to script work is to make it repeatable with accuracy and relative ease.
+One big step in doing this is to write scripts that provide documentation within the script itself and that will accept parameters at the command line.
+
+### Comment-based help
+
+Powershell scripts and functions can use comment-based help (template [here](./comment-based-help.txt) to guide output from get-help.  Add that text to the top of a script to make it much easier for others to understand how to use it.
 
 ## Random snippets
 
@@ -49,7 +119,7 @@ invoke-expression "$($pathvar)scriptname.ps1 -scriptParm1 $($parmVar1)"
 This is neat, because it executes the local c:\utils\testLocalUtil.ps1 script on the three remote computers at the same time. Results are returned to the local computer
 
 ```powershell
-invoke-command -computerName Computer1.smuedu, Computer2.smu.edu, Computer3.smu.edu-filePath c:\utils\testLocalUtil.ps1
+invoke-command -computerName Computer1.smuedu, Computer2.smu.edu, Computer3.smu.edu -filePath c:\utils\testLocalUtil.ps1
 ```
 
 ### Run a script block on remote computers simultaneously
