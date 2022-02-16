@@ -145,7 +145,7 @@ if ($PSBoundParameters.ContainsKey("computerName"))
 {
     $rebootParams.Add("/m \\$($computerName)")
 }
-shutdown -ArgumentList $rebootParams
+start-process shutdown -arg $rebootParams
 ```
 
 ### Bonus exercise
@@ -232,7 +232,7 @@ if ($PSBoundParameters.ContainsKey("computerName"))
 {
     $rebootParams.Add("/m \\$($computerName)")
 }
-shutdown -ArgumentList $rebootParams
+start-process shutdown -arg $rebootParams
 ```
 
 With this in place, we can run get-help against our script:

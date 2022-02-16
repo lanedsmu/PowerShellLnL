@@ -39,4 +39,4 @@ if ($PSBoundParameters.ContainsKey($computerName))
 {
     $shutdownArgs+=" /m \\\\$($computerName)"
 }
-shutdown $shutdownArgs
+Start-Process shutdown -arg $shutdownArgs
