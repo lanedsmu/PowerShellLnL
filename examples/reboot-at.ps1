@@ -27,12 +27,12 @@ param(
     [parameter(mandatory)]
     [datetime]$RestartTime
 )
-$rebootParams=@(
-"/t $($WaitSeconds)"
-"/r"
+[datetime]$CurrentTime = Get-Date
+[int]$WaitSeconds = ( $RestartTime - $CurrentTime ).TotalSeconds
+
+$rebootParams = @("/t $($WaitSeconds)", "/r"
 )
-if ($PSBoundParameters.ContainsKey("computerName")) 
-{
+if ($PSBoundParameters.ContainsKey("computerName")) {
     $rebootParams.Add("/m \\$($computerName)")
 }
-shutdown -ArgumentList $rebootParams
+Start-Process shutdown -ArgumentList $rebootParams

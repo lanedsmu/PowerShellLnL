@@ -112,6 +112,8 @@ param(
     [parameter(mandatory)]
     [datetime]$RestartTime
 )
+[datetime]$CurrentTime = Get-Date
+[int]$WaitSeconds = ( $RestartTime - $CurrentTime ).TotalSeconds
 $rebootParams=@(
 "/t $($WaitSeconds)"
 "/r"
@@ -137,6 +139,9 @@ param(
     [parameter(mandatory)]
     [datetime]$RestartTime
 )
+[datetime]$CurrentTime = Get-Date
+[int]$WaitSeconds = ( $RestartTime - $CurrentTime ).TotalSeconds
+
 $rebootParams=@(
 "/t $($WaitSeconds)"
 "/r"
@@ -224,15 +229,16 @@ param(
     [parameter(mandatory)]
     [datetime]$RestartTime
 )
-$rebootParams=@(
-"/t $($WaitSeconds)"
-"/r"
+[datetime]$CurrentTime = Get-Date
+[int]$WaitSeconds = ( $RestartTime - $CurrentTime ).TotalSeconds
+
+$rebootParams=@("/t $($WaitSeconds)","/r"
 )
 if ($PSBoundParameters.ContainsKey("computerName")) 
 {
     $rebootParams.Add("/m \\$($computerName)")
 }
-start-process shutdown -arg $rebootParams
+start-process shutdown -argumentlist $rebootParams
 ```
 
 With this in place, we can run get-help against our script:

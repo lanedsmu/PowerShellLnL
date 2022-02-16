@@ -1,42 +1,38 @@
 <#
-   .Synopsis
-    Reboots a Windows computer at a specified time, using the OS shutdown.exe command.
-    .DESCRIPTION
-    Restart-at uses the -t switch of the shutdown.exe Windows utility to set a countdown timer for a reboot.
-    The timer is calculated as the number of seconds between the date provided in the -restartTime parameter and the current time.
-   .EXAMPLE
-    reboot-at -restartTime 8pm
-    restarts the local computer at 8:00pm tonight
-    .EXAMPLE
-    reboot-at -computerName MyServer.smu.edu -restartTime "2022-2-14 2:16am"
-    restarts remote computer MyServer.smu.edu at 2:16am on 2/14/2022
-   .Parameter computerName
-    Name of the remote computer to restart
-    .Parameter restartTime
-    Date (optional) and time (mandatory) to restart the computer
-   .Notes
-    NAME: restart-at
-    VERSION: 1.0
-    AUTHOR: Lane Duncan
-    LASTEDIT: 2/12/2022
-
-    CHANGELOG:
-        v.1.00  20220212    Lane Duncan
-            New script check in
-
-   .Link
-    <wiki.smu.edu/display/ITS/path_to_my_documentation>
+.SYNOPSIS
+    Reboots a computer at a specified date and time
+.DESCRIPTION
+    uses the Windows shutdown.exe application with the /t timer switch to reboot a computer at a specified date and time.
+.PARAMETER computerName
+    (optional) If specified, reboots the remote computer <computerName>
+.PARAMETER RestartTime
+    (mandatory) The time (required) and date (optional) to reboot the computer.  If the time only is specified, the date is assumed to be the current date.
+.EXAMPLE
+    ./reboot-at -RestartTime "8PM"
+        restarts the local host at 8:00pm today
+.EXAMPLE
+    ./reboot-at -computerName mysrv.smu.edu -RestartTime "2022-02-14 7:43pm"
+        restarts the host "mysrv.smu.edu" at 7:43pm on 2/14/2022
+.NOTES
+    FunctionName : reboot-at.ps1
+    Version: 1.00.00
+    Created by   : Lane Duncan
+    Date Coded   : 2/14/2022
+.LINK
+    https://wiki.smu.edu/display/ITS/Powershell+Cmdlets+and+Scripts
 #>
 param(
+    [parameter()]
     [string]$computerName,
-    [parameter(Mandatory)]
-    [string]$restartTime
+    [parameter(mandatory)]
+    [datetime]$RestartTime
 )
-
+[datetime]$CurrentTime = Get-Date
 [int]$WaitSeconds = ( $RestartTime - $CurrentTime ).TotalSeconds
-[string]$shutdownArgs=" /r /t $($WaitSeconds)"
-if ($PSBoundParameters.ContainsKey($computerName))
-{
-    $shutdownArgs+=" /m \\\\$($computerName)"
+
+$rebootParams = @("/t $($WaitSeconds)", "/r"
+)
+if ($PSBoundParameters.ContainsKey("computerName")) {
+    $rebootParams.Add("/m \\$($computerName)")
 }
-Start-Process shutdown -arg $shutdownArgs
+Start-Process shutdown -ArgumentList $rebootParams
