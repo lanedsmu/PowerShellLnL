@@ -90,11 +90,13 @@ get-content ./sampleDataFiles/myJsonSettingsFile.json | convertfrom-json
 The biggest reason to script work is to make it repeatable with accuracy and relative ease.
 One big step in doing this is to write scripts that provide documentation within the script itself and that will accept parameters at the command line.
 
-One example of creating a reboot-at script can be found [here](./examples/reboot-at.md).
+<mark>One example of creating a reboot-at script can be found [here](./examples/reboot-at.md).</mark>
 
 ### Comment-based help
 
 Powershell scripts and functions can use comment-based help (template [here](./comment-based-help.txt) to guide output from get-help.  Add that text to the top of a script to make it much easier for others to understand how to use it.
+
+See the reboot-at walkthrough linked above for a concrete example of using comment-based help.
 
 ## Random snippets
 
