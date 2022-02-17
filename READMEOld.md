@@ -1,16 +1,6 @@
 # Powershell and You: scripting for a better (less manual) world
 
-Table of contents
-- [Installation](#installation)
-- [Basic usage](#basics)
-- [Active Directory Information](#active-directory-information)
-- [CSVs and JSON](#csv-and-json-files)
-- [Writing your own](#writing-your-own-scripts)
-- [Examples](#random-snippets)
-  - [Remoting](#run-ps1-script-on-three-computers-simultaneously)
-  - [CSV and JSON Data files](#data-files)
-
-## Installation
+## PowerShell: Cross-Platform Installation
 
 Used to be PowerShell was just for Windows.  No longer.
 
@@ -31,7 +21,7 @@ MacOS instatllation instructions:  <https://docs.microsoft.com/en-us/powershell/
 
 CENTOS:  <https://docs.microsoft.com/en-us/powershell/scripting/install/install-centos?view>
 
-## Basics
+## Basic PowerShell usage
 
 PowerShell commands are a verb ("get", "invoke", etc.) and a noun ("member","expression").
 Get-Member is a very good example, and it's a command that can be very helpful in understanding what other commands do.
@@ -61,7 +51,7 @@ SmtpServer                  Debug                       PipelineVariable
 
 ## Active Directory information
 
-Powershell (on Windows) has the ability to display and operate on domain objects
+Powershell has the ability to display and operate on domain objects
 
 ```powershell
 get-aduser -identity xxxx 
@@ -70,8 +60,6 @@ get-aduser -identity xxxx
 ```powershell
 get-adgroup -identity xxxx
 ```
-
-For more details on active directory objects and cmdlets, see [this page](./AD.md).
 
 ## CSV and JSON files
 
@@ -90,13 +78,9 @@ get-content ./sampleDataFiles/myJsonSettingsFile.json | convertfrom-json
 The biggest reason to script work is to make it repeatable with accuracy and relative ease.
 One big step in doing this is to write scripts that provide documentation within the script itself and that will accept parameters at the command line.
 
-<mark>One example of creating a reboot-at script can be found [here](./examples/reboot-at.md).</mark>
-
 ### Comment-based help
 
 Powershell scripts and functions can use comment-based help (template [here](./comment-based-help.txt) to guide output from get-help.  Add that text to the top of a script to make it much easier for others to understand how to use it.
-
-See the reboot-at walkthrough linked above for a concrete example of using comment-based help.
 
 ## Random snippets
 
@@ -121,7 +105,7 @@ For more fun, see <https://ss64.com/ps/remove-item.html>
 Invoke-command with the -scriptBlock argument is very powerful
 
 ```powershell
-invoke-command -ComputerName $computerName  -ArgumentList $var1,$var2,$var3 -ScriptBlock {cmdlet-or-function-name -param $var1 -param2 $var2 -param3 $var3
+invoke-command -ComputerName$computerName  -ArgumentList $var1,$var2,$var3 -ScriptBlock {cmdlet-or-function-name -param $var1-param2 $var2 -param3 $var3
     param($var1, $var2, $var3)
 }
 ```
@@ -131,6 +115,7 @@ Path and/or script name can be specified using variables using this method.
 ```powershell
 invoke-expression "$($pathvar)scriptname.ps1 -scriptParm1 $($parmVar1)"
 ```
+
 
 ### Run .ps1 script on three computers simultaneously
 
