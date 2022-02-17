@@ -1,16 +1,22 @@
 <#
    .Synopsis
     This does that 
+    .Description
    .Example
     Example-
     Example- accomplishes 
-   .Parameter 
+   .Parameter <parameterName>
     The parameter
    .Notes
     NAME: Example-
+    Version: 
     AUTHOR: $env:username
     LASTEDIT: $(Get-Date)
     KEYWORDS:
+
+    CHANGELOG
+        v00.00.00   <date>  <Author>
+            <desc>
    .Link
     <wiki.smu.edu/display/ITS/path_to_my_documentation>
 #>

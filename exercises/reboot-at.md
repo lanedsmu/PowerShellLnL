@@ -9,7 +9,10 @@ On this page
 - [Adding Documentation](#documentation-and-help)
 - [Comment-based help template](#help-template)
 
-We'll start with a simple and useful set of commands to reboot a Windows computer at a particular time:
+We'll start with a simple and useful set of commands to reboot a Windows computer at a particular time.  Note that we're focusing on Windows for two reasons:
+
+1. Powershell remoting is enabled by default
+2. Rebooting a Linux computer requires sudo access, which requires additional OS settings that are beyond our scope here.
 
 ```powershell
 [datetime]$RestartTime = '8PM'
@@ -26,7 +29,7 @@ There are a few things to note about these statements:
 - DateTime data types have a <mark>.TotalSeconds</mark> property.
 - We can call a command using a variable as a switch or parameter value.
 
-## Making statements reusable 
+## Making statements reusable
 
 Reusable functions have a couple of characteristics in common:
 
@@ -39,7 +42,7 @@ Here we'll take our collection of commands at the top and turn them into a funct
 
 #### Parameters
 
-In order to accept parameters on the command line, we need to tell the script what those parameters will be. 
+In order to accept parameters on the command line, we need to tell the script what those parameters will be.
 
 ```powershell
 param(
@@ -79,7 +82,7 @@ param(
 shutdown /r /t $WaitSeconds /m "\\$($computerName)"
 ```
 
-#### Array parameters 
+#### Array parameters
 
 What if, instead of requiring our script to be run against a local computer, we wanted to make it more flexible, so that it could be run either against a local or remote system?
 
@@ -154,6 +157,7 @@ start-process shutdown -arg $rebootParams
 ```
 
 ### Bonus exercise
+
 <mark>How might you handle the case when someone specifies a time in the past?</mark>
 
 ## Documentation and help

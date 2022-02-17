@@ -1,6 +1,7 @@
 # Powershell and You: scripting for a better (less manual) world
 
 Table of contents
+
 - [Installation](#installation)
 - [Basic usage](#basics)
 - [Active Directory Information](#active-directory-information)
@@ -90,7 +91,8 @@ get-content ./sampleDataFiles/myJsonSettingsFile.json | convertfrom-json
 The biggest reason to script work is to make it repeatable with accuracy and relative ease.
 One big step in doing this is to write scripts that provide documentation within the script itself and that will accept parameters at the command line.
 
-<mark>One example of creating a reboot-at script can be found [here](./examples/reboot-at.md).</mark>
+</mark>Start with our list-oldfiles script [here](./exercises/list-oldfiles.md)</mark>.
+Create a Windows reboot-at script [here](./exercises/reboot-at.md).
 
 ### Comment-based help
 
