@@ -12,7 +12,7 @@ get-member takes an object (in this case, a cmdlet, but it can be any object) an
 get-uptime |get-member
 ```
 
-```
+```powershell
  PS C:\git\PowerShellLnL> get-uptime |get-member
  
     TypeName: System.TimeSpan

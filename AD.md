@@ -20,7 +20,8 @@ Note that the ability to enumerate AD group membership is a privilege that isn't
 
 ### Searching for accounts and groups
 
-To find a SMU ID based on a user's name, use the <mark>-filter</mark> parameter and a "<mark>*</mark>" for wildcard searching. 
+To find a SMU ID based on a user's name, use the <mark>-filter</mark> parameter and a "<mark>*</mark>" for wildcard searching.  
+
 ```powershell
 get-aduser -filter "(displayname -like 'duncan*')"
 
@@ -238,6 +239,7 @@ get-adgroupmember "OIT All"
 ```
 
 ### Select function
+
 To see only the names of the group members, instead of all of the default properties, use the <mark>select</mark> (alias for select-object) function:
 
 ```powershell

@@ -1,13 +1,14 @@
 <#
-   .Synopsis
+    .Synopsis
     This does that 
     .Description
-   .Example
+    Detailed description of the script
+    .Example
     Example-
     Example- accomplishes 
-   .Parameter <parameterName>
-    The parameter
-   .Notes
+    .Parameter <parameterName>
+    The parameter description
+    .Notes
     NAME: Example-
     Version: 
     AUTHOR: $env:username
@@ -17,6 +18,6 @@
     CHANGELOG
         v00.00.00   <date>  <Author>
             <desc>
-   .Link
+    .Link
     <wiki.smu.edu/display/ITS/path_to_my_documentation>
 #>
