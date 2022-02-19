@@ -132,7 +132,7 @@ Get-ChildItem -Path $filePath -Filter *.* | Where creationTime -lt $olderThan #|
 We'll use the variable "filePath" to store the directory we want to clean up.
 The "olderThan" variable will store the date we want to use as our cutoff.
 
-The [variableType] format we're using here to explictly cast string and datetime variables isn't strictly speaking necessary, but it helps in two ways:  
+The [variableType] format we're using here to explicitly cast string and datetime variables isn't strictly speaking necessary, but it helps in two ways:  
 
 1. it makes it clear to anyone who sees the code what is expected
 2. it helps to minimize the possibility of erroneous data causing unexpected behavior in our code

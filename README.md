@@ -17,13 +17,16 @@ Used to be PowerShell was just for Windows.  No longer.
 
 <https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell>
 
-Install latest version (if you already have Pwsh installed):
+Install latest version (if you already have PowerShell installed):
 <https://aka.ms/install-powershell.ps1>
+
+(For those interested in what that script might do, you can see it all here:  <https://github.com/PowerShell/PowerShell/blob/master/tools/install-powershell.ps1>)
 
 ```powershell
 # Ampersand char is "call" character.  See <https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_operators?view=powershell-7.1#call-operator->
 # expression below will launch a new PowerShell installer
-invoke-expression "& { $(invoke-restMethod <https://aka.ms/install-powershell.ps1>) } -UseMSI"
+invoke-expression "& { $(invoke-restMethod https://aka.ms/install-powershell.ps1) }"
+# add -UseMSI for Windows systems: invoke-expression "& { $(invoke-restMethod https://aka.ms/install-powershell.ps1) } -UseMSI"
 ```
 
 Ubuntu installation instructions: <https://docs.microsoft.com/en-us/powershell/scripting/install/install-ubuntu>
@@ -37,7 +40,7 @@ CENTOS:  <https://docs.microsoft.com/en-us/powershell/scripting/install/install-
 PowerShell commands are a verb ("get", "invoke", etc.) and a noun ("member","expression").
 Get-Member is a very good example, and it's a command that can be very helpful in understanding what other commands do.
 
-Below we'll pipe the get-uptime cmdlet to get-member.
+Below we'll pipe the get-uptime cmdlet to get-member.  More a few more details on get-member and exploring PowerShell commands can be found [here](./getMemberInfo.md).
 
 ```powershell
 get-uptime | get-member 
@@ -72,7 +75,7 @@ get-aduser -identity xxxx
 get-adgroup -identity xxxx
 ```
 
-For more details on active directory objects and cmdlets, see [this page](./AD.md).
+For more details on active directory objects and cmdlets, see [this page](./ADObjectUtils/readme.md).
 
 ## CSV and JSON files
 
@@ -121,10 +124,10 @@ For more fun, see <https://ss64.com/ps/remove-item.html>
 
 ### Executing dynamic commands
 
-Invoke-command with the -scriptBlock argument is very powerful
+Invoke-command with the -scriptBlock argument is very powerful. Note that this defaults to Windows remote management, but it's wholly possible to set up PowerShell to use SSH-based remoting for true cross-platform functionality.  (Note: sudo introduces some wrinkles in ssh-based remoting that aren't handled entirely gracefully.) 
 
 ```powershell
-invoke-command -ComputerName $computerName  -ArgumentList $var1,$var2,$var3 -ScriptBlock {cmdlet-or-function-name -param $var1 -param2 $var2 -param3 $var3
+invoke-command -ComputerName $computerName -ArgumentList $var1,$var2,$var3 -ScriptBlock {cmdlet-or-function-name -param $var1 -param2 $var2 -param3 $var3
     param($var1, $var2, $var3)
 }
 ```
@@ -146,7 +149,7 @@ invoke-command -computerName Computer1.smu.edu, Computer2.smu.edu, Computer3.smu
 ### Run a script block on remote computers simultaneously
 
 ```powershell
-invoke-command -computername Computer1.smuedu, Computer2.smu.edu, Computer3.smu.edu -scriptBlock 
+invoke-command -computername Computer1.smu.edu, Computer2.smu.edu, Computer3.smu.edu -scriptBlock 
 {    
     get-childitem c:\ 
     # and any other statements/scripts you'd like to run 
