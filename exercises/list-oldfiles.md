@@ -160,7 +160,8 @@ Now we've got a script that will display files older than a certain date in a gi
 
 ## Confirmation
 
-If we remove the comment from the remove-item, those files will be deleted. Perhaps we want a confirmation before making this happen.  Let's add that to the remove-item cmdlet when we remove the comment character.
+If we remove the comment from the remove-item, those files will be deleted. Perhaps we want a confirmation before making this happen.  
+When we run ```get-help remove-item```, we see there's a ```-Confirm``` parameter we can use.  Let's add that to the remove-item cmdlet when we remove the comment character.
 
 ```powershell
 param(
@@ -172,6 +173,8 @@ param(
 )
 Get-ChildItem -Path $filePath -Filter $filter | Where creationTime -lt $olderThan |remove-item -confirm
 ```
+
+<mark>Bonus: check out the ```-WhatIf``` parameter for other options.</mark> 
 
 This addition of "-confirm" to our remove-item cmdlet gives us output like this:
 

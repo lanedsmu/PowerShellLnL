@@ -124,7 +124,7 @@ For more fun, see <https://ss64.com/ps/remove-item.html>
 
 ### Executing dynamic commands
 
-Invoke-command with the -scriptBlock argument is very powerful. Note that this defaults to Windows remote management, but it's wholly possible to set up PowerShell to use SSH-based remoting for true cross-platform functionality.  (Note: sudo introduces some wrinkles in ssh-based remoting that aren't handled entirely gracefully.) 
+Invoke-command with the -scriptBlock argument is very powerful. Note that this defaults to Windows remote management, but it's wholly possible to set up PowerShell to use SSH-based remoting for true cross-platform functionality.  (Note: sudo introduces some wrinkles in ssh-based remoting that aren't handled entirely gracefully.)
 
 ```powershell
 invoke-command -ComputerName $computerName -ArgumentList $var1,$var2,$var3 -ScriptBlock {cmdlet-or-function-name -param $var1 -param2 $var2 -param3 $var3
