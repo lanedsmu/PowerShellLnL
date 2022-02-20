@@ -94,7 +94,7 @@ get-content ./sampleDataFiles/myJsonSettingsFile.json | convertfrom-json
 The biggest reason to script work is to make it repeatable with accuracy and relative ease.
 One big step in doing this is to write scripts that provide documentation within the script itself and that will accept parameters at the command line.
 
-</mark>Start with our list-oldfiles script [here](./exercises/list-oldfiles.md)</mark>.
+<mark>Start with our list-oldfiles script [here](./exercises/list-oldfiles.md)</mark>.
 
 Learn how to export to a CSV file from Excel (and operate on Excel data) [here](./exercises/convertFrom-excel2csv.md).
 
