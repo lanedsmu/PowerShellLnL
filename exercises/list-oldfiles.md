@@ -174,7 +174,7 @@ param(
 Get-ChildItem -Path $filePath -Filter $filter | Where creationTime -lt $olderThan |remove-item -confirm
 ```
 
-<mark>Bonus: check out the ```-WhatIf``` parameter for other options.</mark> 
+<mark>Bonus:</mark>  check out the ```-WhatIf``` parameter for other options.
 
 This addition of "-confirm" to our remove-item cmdlet gives us output like this:
 
