@@ -132,7 +132,7 @@ Get-ChildItem -Path $filePath -Filter *.* | Where creationTime -lt $olderThan #|
 We'll use the variable "filePath" to store the directory we want to clean up.
 The "olderThan" variable will store the date we want to use as our cutoff.
 
-The [variableType] format we're using here to explictly cast string and datetime variables isn't strictly speaking necessary, but it helps in two ways:  
+The [variableType] format we're using here to explicitly cast string and datetime variables isn't strictly speaking necessary, but it helps in two ways:  
 
 1. it makes it clear to anyone who sees the code what is expected
 2. it helps to minimize the possibility of erroneous data causing unexpected behavior in our code
@@ -160,7 +160,8 @@ Now we've got a script that will display files older than a certain date in a gi
 
 ## Confirmation
 
-If we remove the comment from the remove-item, those files will be deleted. Perhaps we want a confirmation before making this happen.  Let's add that to the remove-item cmdlet when we remove the comment character.
+If we remove the comment from the remove-item, those files will be deleted. Perhaps we want a confirmation before making this happen.  
+When we run ```get-help remove-item```, we see there's a ```-Confirm``` parameter we can use.  Let's add that to the remove-item cmdlet when we remove the comment character.
 
 ```powershell
 param(
@@ -172,6 +173,8 @@ param(
 )
 Get-ChildItem -Path $filePath -Filter $filter | Where creationTime -lt $olderThan |remove-item -confirm
 ```
+
+<mark>Bonus: check out the ```-WhatIf``` parameter for other options.</mark> 
 
 This addition of "-confirm" to our remove-item cmdlet gives us output like this:
 
