@@ -29,9 +29,9 @@ invoke-expression "& { $(invoke-restMethod https://aka.ms/install-powershell.ps1
 # add -UseMSI for Windows systems: invoke-expression "& { $(invoke-restMethod https://aka.ms/install-powershell.ps1) } -UseMSI"
 ```
 
-Ubuntu installation instructions: <https://docs.microsoft.com/en-us/powershell/scripting/install/install-ubuntu>
+MacOS installation instructions:  <https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-macos>
 
-MacOS instatllation instructions:  <https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-macos>
+Ubuntu installation instructions: <https://docs.microsoft.com/en-us/powershell/scripting/install/install-ubuntu>
 
 CENTOS:  <https://docs.microsoft.com/en-us/powershell/scripting/install/install-centos?view>
 
