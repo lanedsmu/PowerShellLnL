@@ -247,3 +247,5 @@ get-adgroupmember "OIT All" | select name
 ```
 
 The select function can be coupled with many cmdlets to filter the display to give just the information you are looking for.
+
+Try using <mark>select</mark> coupled with the get-aduser function to see only specific properties, like lockedout and PasswordExpired
