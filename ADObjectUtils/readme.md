@@ -5,7 +5,7 @@
 - [List Group members](#list-group-members)
 - [Select specific properties](#select-function)
 
-Cmdlets like get-aduser and get-adgroup rely on the ActiveDirectory PowerShell module.  This needs to be installed or enabled on your (<mark>Windows-only</mark>; sorry) workstation before they'll be available:
+Cmdlets like get-aduser and get-adgroup rely on the ActiveDirectory PowerShell module.  This needs to be installed or enabled on your (<mark>Windows-only</mark>; sorry, however, see [this module for a cross-platform module.](https://github.com/jborean93/PSOpenAD/blob/main/docs/en-US/PSOpenAD.md)) workstation before they'll be available:
 <https://docs.microsoft.com/en-us/powershell/module/activedirectory/?view=windowsserver2019-ps>
 
 - Get-AdUser
