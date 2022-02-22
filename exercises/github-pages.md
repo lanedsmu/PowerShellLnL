@@ -2,7 +2,7 @@
 
 Github's markdown rendering is quite good, though sometimes you want to display text in narrower bands or with different themes, to improve readability.  Enter Github pages.
 
-To enable pages on your repository, click on the settings icon for your repository and select the pages tab on the left, as below.
+To enable pages on your repository, click on the settings icon for your repository <mark>note: not your profile settings</mark> and select the pages tab on the left, as below.
 
 ![Github pages settings link](../images/pagesSettings1.png)
 
