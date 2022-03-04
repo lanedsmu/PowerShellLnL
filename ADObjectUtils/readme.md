@@ -37,7 +37,9 @@ import-module activedirectory
 Get-ADUser -identity xxxxxxx -properties DisplayName, LastBadPasswordAttempt, LastLogonDate, LockedOut, AccountExpirationDate, PasswordExpired, BadLogonCount, badPwdCount, lockoutTime
 ```
 
-To see all of the properties available, use a wildcard for the properties parameter and pipe it to get-member:
+To see all of the properties available, use a wildcard for the properties parameter and pipe it to get-member.  
+We need to use the wildcard on the properties because there are so many that the default is only to return a few.  
+get-member can't know about properties unless they're piped to it. 
 
 ```powershell
 PS C:\> get-aduser -properties * -identity xxxxxxx |get-member
@@ -249,3 +251,11 @@ get-adgroupmember "OIT All" | select name
 The select function can be coupled with many cmdlets to filter the display to give just the information you are looking for.
 
 Try using <mark>select</mark> coupled with the get-aduser function to see only specific properties, like lockedout and PasswordExpired
+
+## Pipes 
+
+The pipe character "|" is used extensively in PowerShell to send the output of one command as an input to another.  If we wanted, for instance, to get the displayname of all members of a domain group, we might do something like this:
+
+```powershell
+get-adgroupmember "OIT All" | get-aduser | select displayname
+```
