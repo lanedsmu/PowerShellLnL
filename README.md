@@ -42,6 +42,8 @@ Get-Member is a very good example, and it's a command that can be very helpful i
 
 Below we'll pipe the get-uptime cmdlet to get-member.  More a few more details on get-member and exploring PowerShell commands can be found [here](./getMemberInfo.md).
 
+get-uptime, below, is a function available in later versions of Powershell. Make sure you've installed the latest before trying to execute this command.
+
 ```powershell
 get-uptime | get-member 
 ```

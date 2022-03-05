@@ -5,7 +5,7 @@
 - [List Group members](#list-group-members)
 - [Select specific properties](#select-function)
 
-Cmdlets like get-aduser and get-adgroup rely on the ActiveDirectory PowerShell module.  This needs to be installed or enabled on your (<mark>Windows-only</mark>; sorry) workstation before they'll be available:
+Cmdlets like get-aduser and get-adgroup rely on the ActiveDirectory PowerShell module.  This needs to be installed or enabled on your (<mark>Windows-only</mark>; sorry, however, see [this module for a cross-platform module.](https://github.com/jborean93/PSOpenAD/blob/main/docs/en-US/PSOpenAD.md)) workstation before they'll be available:
 <https://docs.microsoft.com/en-us/powershell/module/activedirectory/?view=windowsserver2019-ps>
 
 - Get-AdUser
@@ -37,7 +37,9 @@ import-module activedirectory
 Get-ADUser -identity xxxxxxx -properties DisplayName, LastBadPasswordAttempt, LastLogonDate, LockedOut, AccountExpirationDate, PasswordExpired, BadLogonCount, badPwdCount, lockoutTime
 ```
 
-To see all of the properties available, use a wildcard for the properties parameter and pipe it to get-member:
+To see all of the properties available, use a wildcard for the properties parameter and pipe it to get-member.  
+We need to use the wildcard on the properties because there are so many that the default is only to return a few.  
+get-member can't know about properties unless they're piped to it. 
 
 ```powershell
 PS C:\> get-aduser -properties * -identity xxxxxxx |get-member
@@ -247,3 +249,13 @@ get-adgroupmember "OIT All" | select name
 ```
 
 The select function can be coupled with many cmdlets to filter the display to give just the information you are looking for.
+
+Try using <mark>select</mark> coupled with the get-aduser function to see only specific properties, like lockedout and PasswordExpired
+
+## Pipes 
+
+The pipe character "|" is used extensively in PowerShell to send the output of one command as an input to another.  If we wanted, for instance, to get the displayname of all members of a domain group, we might do something like this:
+
+```powershell
+get-adgroupmember "OIT All" | get-aduser | select displayname
+```
