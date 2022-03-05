@@ -119,7 +119,7 @@ When we're wanting to list files that are older than a certain date, we need to 
 - what our "old" threshold is
 
 We'll use parameters in the script to gather these from the user at each invocation.
-To user parameters, we put a param() section at the beginning of our script:
+To use parameters, we put a param() section at the beginning of our script:
 
 ```powershell
 param(
