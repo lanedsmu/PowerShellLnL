@@ -6,7 +6,9 @@ A quick google search shows that converting Excel sheets to CSV files is a commo
 
 ## ImportExcel Module
 
-A function based on that can be found [here](./convertFrom-excel2csv.ps1).  There's another method that doesn't require Excel, using the importexcel module published in the PowerShell gallery.
+A function based on that can be found [here](./convertFrom-excel2csv.ps1).  
+
+There's another method that doesn't require Excel, using the importexcel module published in the PowerShell gallery.
 
 See <https://devblogs.microsoft.com/scripting/introducing-the-powershell-excel-module-2/> for details.
 
