@@ -1,5 +1,7 @@
 # Powershell and You: scripting for a better (less manual) world
 
+![Skynet](/images/Skynet_logo.jpg "Automation is always better.")
+
 Table of contents
 
 - [Installation](#installation)
